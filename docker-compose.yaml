@@ -1,0 +1,39 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  app1:
+    build: .
+    networks:
+      - app_network
+    environment:
+      - INSTANCE_NAME=Instance1
+
+  app2:
+    build: .
+    networks:
+      - app_network
+    environment:
+      - INSTANCE_NAME=Instance2
+
+  app3:
+    build: .
+    networks:
+      - app_network
+    environment:
+      - INSTANCE_NAME=Instance3
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app1
+      - app2
+      - app3
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
