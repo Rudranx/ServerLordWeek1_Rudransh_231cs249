@@ -13,3 +13,9 @@ We can access our application at port 80 by the help of nginx.Nginx config is ma
 
 ![Screenshot 2024-11-02 011821](https://github.com/user-attachments/assets/685e0218-85d4-4391-8e1d-2130008d64a8)
 We can see in our logs,we are getting response from different server in round-robin way
+
+## Best load balancing method for cron manager application:
+The most appropriate load balancing method would be Least Connections (Weighted Least Connections) algorithm.
+This method ensures fair distribution of the load on the basis of -
+1.Server Capacity:Server with high capacity can handle more request
+2.The server which have have least connections,will get a connection if request comes.
