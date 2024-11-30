@@ -1,20 +1,15 @@
-# ServerLordWeek1
+![Screenshot 2024-11-02 004631](https://github.com/user-attachments/assets/a32dc6f0-20c0-4a2c-996f-f35d075eab98)
+This is a DockerFile which is used to create image of our python app.
+Firstly,we are taking base image of python.Then,copy requirements.txt,which contains all the necessary dependencies required to run our application.Install flask and copy main.py file.Then,exxpose this application at port 5050.Then,there is a cmd to run this application.
 
+![Screenshot 2024-11-02 011723](https://github.com/user-attachments/assets/fb75c8ca-0cc8-42d1-9347-527d143cf2d2)
+This is docker-compose file which is used to launch 3 instances of our application along with nginx container over same network.
 
-1. Fork this repository as ServerLordWeek1_Name_RollNo
-2. Dockerise the python app and expose it on port 5050 using port mapping 
-3. Make >2 instances of the application and create a docker network using docker-compose containing all the instances and a nginx proxy that distributes the load and is visible on port 80 of host machine
-4. Start with a round robin algorithm for load balancing and explore other options
-5. What algorithm do you think will best suit the needs of a multi tenant SAAS like our cron job manager application? Give your justification in the README.
-6. Give a demonstration of the whole set-up (steps 3-5) through screen shots and brief explanations.
+![Screenshot 2024-11-02 011711](https://github.com/user-attachments/assets/632ac4e5-8431-42c8-a047-334b8981ec11)
+Now,our 3 apps instances along with proper nginx configuration are running.
 
-Resources :
+![Screenshot 2024-11-02 011736](https://github.com/user-attachments/assets/5e8a03c5-bba6-4cc0-80b7-c3409adf32db)
+We can access our application at port 80 by the help of nginx.Nginx config is made in way such that it distributes the traffic in round robin format.
 
-[Docker](https://www.youtube.com/watch?v=Ud7Npgi6x8E)
-
-[Docker compose](https://www.youtube.com/watch?v=HGKfE-cn9y4&t=111s)
-
-[Installation](https://medium.com/@tomer.klein/step-by-step-tutorial-installing-docker-and-docker-compose-on-ubuntu-a98a1b7aaed0https://www.youtube.com/watch?v=HGKfE-cn9y4&t=111s)
-
-[Inspiration for our application](https://healthchecks.io/)
-   
+![Screenshot 2024-11-02 011821](https://github.com/user-attachments/assets/685e0218-85d4-4391-8e1d-2130008d64a8)
+We can see in our logs,we are getting response from different server in round-robin way
